@@ -9,7 +9,63 @@
     
 
     <script>
-        console.log()
+        let arr = ['rock','paper','scissors']
+        let opcion = prompt("escoge entre piedra, papel o tijeras");
+        let humanScore = 0;
+        let computerScore = 0;
+
+        function getComputerChoice(){
+            let respuesta = Math.floor(Math.random() * arr.length);
+            return arr[respuesta]
+        }
+        function getHumanChoice(){
+            return arr[opcion]
+        }
+
+        function playRound(humanChoice, computerChoice){
+           
+            if(humanChoice === 'scissors' && computerChoice === 'paper'){
+                humanScore++
+                console.log(`“You win! scissors beats Paper” computerScore +1 ${humanScore}`)
+            }else if(humanChoice === 'rock' && computerChoice === 'scissors'){
+                humanScore++
+                console.log(`“You win! rock beats scissors” humanScore +1 ${humanScore}`)
+            }else if(humanChoice === 'paper' && computerChoice === 'rock'){
+                humanScore++
+                console.log(`“You win! Paper beats rock” humanScore +1 ${humanScore}`)
+            }else if(humanChoice === 'paper' && computerChoice === 'scissors'){
+                computerScore++
+                console.log(`“You lose! scissors beats paper” humanScore +1 ${computerScore}`)
+            }else if(humanChoice === 'scissors' && computerChoice === 'rock'){
+                computerScore++
+                console.log(`“You lose! scissors beats paper” humanScore +1 ${computerScore}`)
+            }else if(humanChoice === 'rock' && computerChoice === 'paper'){
+                computerScore++
+                console.log(`“You lose! scissors beats paper” humanScore +1 ${computerScore}`)
+            }
+            
+        }
+
+        function playGame(){
+            for (let i = 0; i < 5; i++) {
+            let opcion = prompt("Ronda " + (i + 1) + ": escoge entre piedra, papel o tijeras");
+            playRound(getHumanChoice(), getComputerChoice());
+        }
+
+                
+            if (humanScore > computerScore) {
+                console.log(`¡Ganaste el juego! Humano: ${humanScore} - Computadora: ${computerScore}`);
+            } else if (computerScore > humanScore) {
+                console.log(`La computadora gana el juego. Humano: ${humanScore} - Computadora: ${computerScore}`);
+            } else {
+                console.log(`Empate total. Humano: ${humanScore} - Computadora: ${computerScore}`);
+            }
+
+        }
+        
+        console.log(playGame())
+        /* console.log(getComputerChoice())
+        console.log(getHumanChoice()) */
     </script>
 </body>
 </html>
